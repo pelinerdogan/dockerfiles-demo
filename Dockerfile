@@ -11,7 +11,7 @@ ARG sonarHostUrl='http://192.168.27.129:9000'
 RUN echo $sonarProjectKey
 # Copy the source code and build the JAR
 COPY src /app/src
-RUN mvn package -DskipTests sonar:sonar -Dsonar.projectKey=${sonarProjectKey} -Dsonar.host.url=${sonarHostUrl} -Dsonar.login=${sonarLoginToken}
+RUN mvn clean verify sonar:sonar -Dsonar.projectKey=${sonarProjectKey} -Dsonar.host.url=${sonarHostUrl} -Dsonar.login=${sonarLoginToken} -DskipTests
 
 # Stage 2: Create the final image with the built JAR
 FROM openjdk:11-jre-slim
