@@ -6,7 +6,7 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline
 ARG sonarProjectKey='simple-java'
-ARG sonarLoginToken='sqa_f1d01c4813e55327904fcef809bd7b188078be69'     
+ARG sonarLoginToken='sqp_269e1e2bd1551aee202e8fdb4a374724d6fe83'     
 ARG sonarHostUrl='http://192.168.184.128:9000'
 # Copy the source code and build the JAR
 COPY src /app/src
