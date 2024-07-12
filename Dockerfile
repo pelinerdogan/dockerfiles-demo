@@ -1,5 +1,5 @@
 # Stage 1: Build the Spring Boot JAR
-FROM maven:3.8.3-openjdk-11 AS build
+FROM maven:3.8.3-openjdk-8 AS build
 WORKDIR /app
 
 # Copy the project's POM file and download dependencies
@@ -13,7 +13,7 @@ COPY src /app/src
 RUN mvn clean verify sonar:sonar -Dsonar.projectKey=${sonarProjectKey} -Dsonar.host.url=${sonarHostUrl} -Dsonar.login=${sonarLoginToken} -DskipTests
 
 # Stage 2: Create the final image with the built JAR
-FROM openjdk:11-jre-slim
+FROM openjdk:8-jre-slim
 WORKDIR /app
 
 # Copy the built JAR from the build stage
